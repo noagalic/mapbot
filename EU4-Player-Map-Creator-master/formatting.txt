@@ -1,0 +1,33 @@
+## player_country_list.txt ##
+
+Country 1
+Country 2
+-Vassal 1
+-Vassal 2
+Country 3
+Country 4
+-Vassal 3
+
+# Country 1 through 4 are player nations, regardless of independence.
+Vassal 1 and 2 are AI vassals of Country 2.
+Vassal 3 is an AI vassal of Country 4.
+
+## image_names.txt ##
+
+Input Image = my_image.jpeg
+Output Image = my_new_map.jpeg
+
+# You only modify the right side of the "=" and put the map file name
+
+## eu4_directory.txt ##
+
+C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis IV
+
+# Whatever directory your game is at
+
+## weird_names.txt ##
+
+in-game name = country file name
+
+# Some country's in game names don't correspond to their country file name.
+For example "Muscovy" is "Muscowy" in the files. "Mamluks" is "Burgi" in files.
