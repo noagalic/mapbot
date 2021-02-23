@@ -1,3 +1,5 @@
+const countries = require("./src/MapFunctions/countryList.js");
+const fs = require('fs');
 require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -7,19 +9,41 @@ bot.login(TOKEN);
 
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
+  console.info(checkList('Hajka'));
 });
 
-bot.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-    msg.channel.send('pong');
+//Funkcije
 
-  } else if (msg.content.startsWith('!kick')) {
-    if (msg.mentions.users.size) {
-      const taggedUser = msg.mentions.users.first();
-      msg.channel.send(`You wanted to kick: ${taggedUser.username}`);
-    } else {
-      msg.reply('Please tag a valid user!');
+//Rezervacija
+var checkList = (message) => {
+  var tag = countries[message];
+  var nope = false;
+  for (var i in countries) {
+    if (countries[i] == tag){
+      nope=true;
     }
   }
-});
+  return nope;
+};
+
+var reserve = (message) => {
+  fs.appendFile('reservations.txt', message.content + "\r\n", (err) => {
+    if (err) throw err;
+  });
+};
+
+bot.on('message', msg => {
+  var tagx = msg.content;
+  console.info(checkList(tagx));
+  if (msg.content === '!new') {
+    fs.unlink('reservations.txt', (err) => {
+      if (err) throw err;
+      msg.channel.send("Rezervacije osvježene!");
+    });
+    } else if (checkList(tagx) === true) {
+      reserve(msg);
+      //msg.channel.send("Hey " + countries.tagx)
+      msg.channel.send(countries[tagx]);
+    }
+  }
+);

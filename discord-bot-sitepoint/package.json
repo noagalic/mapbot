@@ -9,7 +9,14 @@
   "author": "Michiel Mulders",
   "license": "ISC",
   "dependencies": {
+    "babel": "^6.23.0",
     "discord.js": "^11.5.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "file-saver": "^2.0.5",
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/node": "^7.12.17"
   }
 }
